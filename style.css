@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Press+Start+2P&family=VT323&display=swap");
+
 body,
 section,
 div,
@@ -13,118 +15,311 @@ input {
   list-style: none;
   text-decoration: none;
 }
+body {
+  background: #070f11;
+}
+
 section {
-  margin: 0;
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.seleciona {
+  display: none;
+  position: relative;
+  top: 40vh;
+}
+
+.seleciona.final {
+  animation: animaUp forwards 1s;
 }
 
 section h1 {
   margin-bottom: 30px;
-  font-size: 2.375rem;
-}
-.seleciona {
-  margin: 0 auto;
-  border: 2px solid #506ad4;
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 6px;
-}
-.seleciona input {
-  border: none;
-  width: 260px;
-  height: 40px;
-  outline: none;
-  border-top-left-radius: 6px;
-  border-bottom-left-radius: 6px;
-  padding-left: 5px;
-  font-size: 1.125rem;
+  font-size: 2.5rem;
+  font-family: "Press Start 2P", "cursive";
+  color: #1cb798;
+  text-shadow: 0 0 4px #1cb798;
 }
 
-.seleciona input:focus::-webkit-input-placeholder {
-  color: transparent;
+section h1.anima::after {
+  content: "|";
+  position: relative;
+  color: white;
+  animation: animationBarra infinite 1s;
+  text-shadow: 0 0 10px white;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
 }
 
 .seleciona button {
-  border: none;
-  border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px;
-  width: 40px;
-  height: 40px;
-  font-size: 1rem;
-  background: #c2b8ad;
+  margin: 0 auto;
+  display: none;
+  position: relative;
+  top: 8vh;
+  border: 2px solid #a9b1c1;
+  padding: 10px 15px;
+  outline: none;
+  border-radius: 6px;
+  font-size: 1.5rem;
+  text-align: center;
+  background: #070f11;
+  color: #a9b1c1;
+  text-transform: uppercase;
+}
+
+.seleciona.activo {
+  display: block;
+}
+
+.seleciona button.activo {
+  display: block;
+  animation: animaDown forwards 1s;
 }
 
 .seleciona button:hover {
-  background: #506ad4;
-  color: white;
+  color: #070f11;
+  background: #1cb798;
+  border: 2px solid #1cb798;
 }
 
+/* Lista de opções*/
 .opcoes {
   display: none;
-  position: absolute;
+  position: relative;
   left: 50%;
   margin-right: -50%;
-  transform: translate(-50%, 5%);
+  transform: translate(-50%, 11vh);
+  color: #a9b1c1;
+  overflow-y: scroll;
+  max-height: 225px;
+  width: 400px;
+  border: 2px solid #1cb798;
+  border-radius: 6px;
+  background: #070f11;
+  z-index: 10;
 }
 
 .opcoes.ativo {
   display: block;
+  animation: openOptions forwards 0.5s;
 }
 
-.datas {
+.opcoes::-webkit-scrollbar {
+  width: 10px;
+}
+
+.opcoes::-webkit-scrollbar-thumb {
+  background: #1cb798;
+  border-right: 5px solid #070f11;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.opcoes::-webkit-scrollbar-track {
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.opcoes li {
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.opcoes li::after {
+  content: " ";
+  border: 1px solid #1cb798;
+  display: block;
+  box-shadow: 0 0 2px #1cb798;
+  max-width: 200px;
   margin: 0 auto;
+  margin-top: 10px;
+}
+
+/* Datas */
+
+.datas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -30%);
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 400px;
+}
+
+.datas h2 {
+  display: none;
+  margin-bottom: 15px;
+  font-size: 2rem;
+  color: #1cb798;
 }
 
 .datas li {
   margin: 10px auto;
-  background: tomato;
   display: none;
+  border-radius: 6px;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 15px;
+  text-transform: uppercase;
 }
 
-h2 {
-  margin: 10px 0;
-  font-size: 1.5rem;
-}
-
-ul li.ativo {
+.datas li.ativo {
   display: block;
 }
 
+/* Relogio */
 .tempo {
   display: flex;
+  justify-content: space-around;
 }
 
 .tempo span {
-  margin: 0 10px;
+  display: none;
+  margin: 0 30px;
+  font-family: "Press Start 2P", "cursive";
+  font-size: 4rem;
+  color: #1cb798;
+  text-shadow: 0 0 4px #1cb798;
+  animation: animaDown forwards 1s;
 }
 
-.dias::before {
+.tempo span.ativo {
+  display: block;
+}
+
+.dias.ativo::before {
   content: "Dias";
   display: block;
 }
 
-.horas::before {
+.horas.ativo::before {
   content: "Horas";
   display: block;
 }
 
-.minutos::before {
+.minutos.ativo::before {
   content: "Minutos";
   display: block;
 }
 
-.segundos::before {
+.segundos.ativo::before {
   content: "Segundos";
   display: block;
+}
+
+.dias::before,
+.horas::before,
+.minutos::before,
+.segundos::before {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  text-shadow: none;
+  color: #a9b1c1;
+}
+
+/* animações */
+
+@keyframes animationBarra {
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+}
+
+@keyframes animaDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes animaUp {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(0, -30vh, 0);
+  }
+}
+
+@keyframes openOptions {
+  from {
+    width: 0;
+  }
+  to {
+    width: 400px;
+  }
+}
+
+@keyframes animaRigth {
+  from {
+    opacity: 0;
+    transform: translate3d(-30px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* responsivo */
+
+@media only screen and (max-width: 850px) {
+  section h1 {
+    font-size: 1.75rem;
+    line-height: 3rem;
+  }
+
+  section h1.anima::after {
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+  }
+
+  .tempo span {
+    font-size: 2.375rem;
+    margin: 0 20px;
+  }
+
+  .dias::before,
+  .horas::before,
+  .minutos::before,
+  .segundos::before {
+    font-size: 1.125rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  section h1 {
+    margin: 0 50px 10px 50px;
+  }
+  .tempo {
+    display: block;
+    transform: translateY(0vh);
+  }
+
+  .tempo span {
+    margin-bottom: 20px;
+    animation: animaRigth forwards 1.5s;
+  }
+
+  .seleciona button {
+    top: 0vh;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  section h1 {
+    margin: 0 20px 10px 20px;
+  }
 }
