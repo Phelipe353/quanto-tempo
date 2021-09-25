@@ -287,15 +287,15 @@ section h1.anima::after {
   }
 
   .tempo span {
-    font-size: 2.375rem;
-    margin: 0 20px;
+    font-size: 1.125rem;
+    margin: 0 10px;
   }
 
   .dias::before,
   .horas::before,
   .minutos::before,
   .segundos::before {
-    font-size: 1.125rem;
+    font-size: 0.75rem;
   }
 }
 
@@ -304,13 +304,8 @@ section h1.anima::after {
     margin: 0 50px 10px 50px;
   }
   .tempo {
-    display: block;
+    display: flex;
     transform: translateY(0vh);
-  }
-
-  .tempo span {
-    margin-bottom: 20px;
-    animation: animaRigth forwards 1.5s;
   }
 
   .seleciona button {
