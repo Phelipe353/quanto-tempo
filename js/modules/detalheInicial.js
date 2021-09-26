@@ -3,7 +3,6 @@ export default function detalheInicial( ) {
   const button = document.querySelector('.seleciona button');
   const divIntro = document.querySelector('.seleciona');
   function typeWrite(elemento){
-    elemento.classList.add('activo');
     divIntro.classList.add('activo');
     const textoArray = elemento.innerHTML.split('');
     elemento.innerHTML = '';

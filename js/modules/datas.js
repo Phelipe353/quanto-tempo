@@ -46,14 +46,14 @@ export default function initDatas(){
           displayDias[i].innerText = diasB;
           displayHoras[i].innerText = tempos[i].total.hours +24;
           displayMinutos[i].innerText = tempos[i].total.minutes +60;
-          displaySegundos[i].innerText = tempos[i].total.seconds +60;
+          displaySegundos[i].innerText = tempos[i].total.seconds +59;
         }else{
           //Anos normais
           const dias = tempos[i].days + 365;
           displayDias[i].innerText = dias;
           displayHoras[i].innerText = tempos[i].total.hours +24;
           displayMinutos[i].innerText = tempos[i].total.minutes + 60;
-          displaySegundos[i].innerText = tempos[i].total.seconds +60;
+          displaySegundos[i].innerText = tempos[i].total.seconds +59;
         }
       }else{
         //Eventos que ainda vão correr no ano atual
